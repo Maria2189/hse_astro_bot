@@ -1,0 +1,40 @@
+{# templates/admin/base_site.html #}
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block extrahead %}
+  {{ block.super }}
+  <!-- Только тёмная схема -->
+  <link rel="stylesheet" href="{% static 'admin/css/admin_dark_purple.css' %}">
+  <link rel="stylesheet" href="{% static 'admin/css/nested_forms_dark_purple.css' %}">
+  <meta name="color-scheme" content="dark">
+  <style>
+    /* Скрыть переключатель темы */
+    #header .theme-toggle,
+    button.theme-toggle { display: none !important; }
+
+    /* Заставить браузер считать, что есть только dark */
+    html {
+      color-scheme: dark !important;
+      background-color: #1e1e2f !important;
+      color:            #ddd    !important;
+    }
+
+    /* Убираем белые inlines */
+    .djn-table,
+    .djn-tbody,
+    .djn-item {
+      background-color: transparent !important;
+    }
+    .djn-tbody .djn-item {
+      background-color: #2e2e3b !important;
+      color:            #e0e0e0 !important;
+      border-bottom:    1px solid #444 !important;
+    }
+    .djn-thead th {
+      background-color: #3a3a4c !important;
+      color:            #fff    !important;
+      border-bottom:    2px solid #555 !important;
+    }
+  </style>
+{% endblock %}
